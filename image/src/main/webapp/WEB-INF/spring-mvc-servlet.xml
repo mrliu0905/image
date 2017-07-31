@@ -20,6 +20,8 @@
     <!-- Important!! -->
     <!-- Default Servlet Handler (For Resources *.css, *.js, image,..) -->
     <mvc:default-servlet-handler/>
+
+
     <mvc:annotation-driven/>
 
     <!-- Config resource mapping -->

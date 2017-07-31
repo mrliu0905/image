@@ -1,17 +1,18 @@
+package controller;
+
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * Created by Administrator on 2017/7/27.
@@ -24,6 +25,23 @@ public class Upload {
 
         return "upload";
     }
+
+    @RequestMapping("/dituUrl")
+    @ResponseBody
+    public String dituUrl(@RequestParam("file1") CommonsMultipartFile file1,
+                          HttpServletRequest request) throws IOException {
+        BufferedImage img = ImageIO.read(file1.getInputStream());
+        String fileName = "" + System.currentTimeMillis();
+        String url = "172.203.148.47/styles/others/assets/img/"+fileName;
+        OutputStream outImg = new FileOutputStream(url);
+        JPEGImageEncoder enc = JPEGCodec.createJPEGEncoder(outImg);
+        enc.encode(img);
+
+        outImg.close();
+        file1.getInputStream().close();
+        return url;
+    }
+
 
     @RequestMapping(value = "success")
     public String success(@RequestParam("file1") CommonsMultipartFile file1,
