@@ -12,7 +12,10 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Created by Administrator on 2017/7/27.
@@ -26,10 +29,18 @@ public class Upload {
         return "upload";
     }
 
+    @ResponseBody
+    @RequestMapping("test")
+    public String test(@RequestParam("test") String test){
+        System.out.println("abx");
+        return test;
+    }
+
     @RequestMapping("/dituUrl")
     @ResponseBody
     public String dituUrl(@RequestParam("file1") CommonsMultipartFile file1,
                           HttpServletRequest request) throws IOException {
+        System.out.println("dituUrl");
         BufferedImage img = ImageIO.read(file1.getInputStream());
         String fileName = "" + System.currentTimeMillis();
         String url = "172.203.148.47/styles/others/assets/img/"+fileName;

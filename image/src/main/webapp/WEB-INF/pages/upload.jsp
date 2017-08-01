@@ -40,14 +40,14 @@
                     <div class="img-container">
                         <img src="${pageContext.request.contextPath}/styles/others/assets/img/picture-2.jpg"
                              alt="Picture" id="img1">
-
-                        <%--<img src=""--%>
-                             <%--alt="Picture" id="img1">--%>
                     </div>
                     <div class="img-container">
-                        <input type="file" id="file1" name="file1"/>
-
-                        <div id="aaa" style="width: 640px;height: 900px"></div>
+                        <form id="pic1" action="dituUrl"
+                              enctype="multipart/form-data" method="post">
+                            <input type="file" id="file1" name="file1"/>
+                            <input type="button" value="上传" id="upload1"/>
+                            <div id="aaa" style="width: 640px;height: 900px"></div>
+                        </form>
                     </div>
                 </div>
 
@@ -86,8 +86,8 @@
         </div>
         <!-- Alert -->
 
-
-        <script src="${pageContext.request.contextPath}/styles/others/assets/js/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <%--<script src="${pageContext.request.contextPath}/styles/others/assets/js/jquery.min.js"></script>--%>
         <script src="${pageContext.request.contextPath}/styles/others/assets/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/styles/others/dist/cropper.js"></script>
         <script src="${pageContext.request.contextPath}/styles/others/js/main.js"></script>

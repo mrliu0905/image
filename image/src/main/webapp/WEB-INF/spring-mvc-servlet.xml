@@ -22,20 +22,21 @@
     <mvc:default-servlet-handler/>
 
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+    </mvc:annotation-driven>
 
     <!-- Config resource mapping -->
     <mvc:resources mapping="/styles/**" location="/WEB-INF/resources/"/>
 
 
     <!-- Config Properties file -->
-    <bean id="appProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="locations">
-            <list>
-                <value>classpath:ApplicationRB.properties</value>
-            </list>
-        </property>
-    </bean>
+    <!--<bean id="appProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">-->
+        <!--<property name="locations">-->
+            <!--<list>-->
+                <!--<value>classpath:ApplicationRB.properties</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
 
 
     <bean
